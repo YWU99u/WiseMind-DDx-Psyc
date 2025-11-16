@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnostic Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f0f2f5;
+            margin: 0;
+        }
+
+        h1 {
+            color: #4a90e2;
+            margin-bottom: 20px;
+        }
+
+        #result-container {
+            width: 80%;
+            max-width: 600px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        #result-text {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4a90e2;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 5px;
+        }
+
+        button:hover {
+            background-color: #357abd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Diagnostic Result</h1>
+    <div id="result-container">
+        <p id="result-text">Loading result...</p>
+        <button onclick="goHome()">Back to Home Page</button>
+        <button onclick="saveResult()">Save Result</button>
+    </div>
+
+    <script>
+        // Function to extract the 'result' parameter from the URL
+        function getQueryParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Display the diagnostic result in the result-text element
+        const result = getQueryParameter('result');
+        const resultText = document.getElementById('result-text');
+        if (result) {
+            resultText.textContent = decodeURIComponent(result);
+        } else {
+            resultText.textContent = "No result available.";
+        }
+
+        // Function to return to the home page
+        function goHome() {
+            window.location.href = "/";
+        }
+
+        // Function to save the result as a text file
+        function saveResult() {
+            if (result) {
+                const decodedResult = decodeURIComponent(result);
+                const blob = new Blob([decodedResult], { type: 'text/plain' });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'diagnostic_result.txt';
+                link.click();
+                URL.revokeObjectURL(link.href);
+            } else {
+                alert("No result available to save.");
+            }
+        }
+    </script>
+</body>
+</html>

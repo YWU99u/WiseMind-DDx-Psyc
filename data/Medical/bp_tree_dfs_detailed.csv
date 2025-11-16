@@ -1,0 +1,33 @@
+path,name,parent,Description
+/ROOT,ROOT,,Starting the interview
+/ROOT/ELEVATEDMOOD,ELEVATEDMOOD,ROOT,ask the patient necessary ice-breaking questions (such as what's the purpose of the visit or any necessary question to make the patient feel comfortable and build connections; these are not related to the symptoms and it is only for ice-breaking) to initiate the interview. the criteria are met when the patient has an elevated or expansive mood. not met if the patient clearly does not have a elevated or expansive mood or expresses a normal mood or say good bye.
+/ROOT/ELEVATEDMOOD/SUB,SUB,ELEVATEDMOOD,"Determine if the patient's elevated or expansive mood is primarily due to the physiological effects of a substance, such as drugs, alcohol, or medications for any medical conditions. The criteria is met when the patient's mood disturbance is directly linked to the substance's effects, otherwise not met"
+/ROOT/ELEVATEDMOOD/SUB/SUB_SEV,SUB_SEV,SUB,"Evaluate if the elevated or expansive mood reported by the patient is the primary focus of the clinical picture and is of sufficient severity to require clinical attention. This means the symptoms should be significant enough to cause notable distress or impairment, making them a central concern in the patient's overall condition."
+/ROOT/ELEVATEDMOOD/SUB/SUB_SEV/SIBP,SIBP,SUB_SEV,Substance/Medication-Induced Bipolar Disorder
+/ROOT/ELEVATEDMOOD/SUB/SUB_SEV/SI,SI,SUB_SEV,Substance Intoxication; Substance Withdrawal; Other Adverse Effect of Medication
+/ROOT/ELEVATEDMOOD/SUB/MED,MED,SUB,"Determine if the patient's elevated or expansive mood is primarily caused by the physiological effects of a general medical condition, such as physical health issues. This assessment should focus on whether the mood disturbance is directly linked to the underlying medical condition. The criteria is met when the patient's mood disturbance is directly linked to the medical condition, otherwise not met"
+/ROOT/ELEVATEDMOOD/SUB/MED/MED_COG,MED_COG,MED,"Assess whether the patient shows evidence of decline in one or more cognitive domains, including complex attention, executive function, learning and memory, language, perceptual-motor abilities, or social cognition. This decline should be noticeable and impact the patient's ability to function in these specific areas."
+/ROOT/ELEVATEDMOOD/SUB/MED/MED_COG/MNEUD,MNEUD,MED_COG,"Major or Mild Neurocognitive disorder due to another medical condition, with behavioral disturbance"
+/ROOT/ELEVATEDMOOD/SUB/MED/MED_COG/MEDBP,MEDBP,MED_COG,Bipolar and Related Disorder due to another medical condition
+/ROOT/ELEVATEDMOOD/SUB/MED/MANIC,MANIC,MED,"the patient has reported clinically significant manic. criteria met for a manic episode (i.e., **at least 1 week of elevated**, expansive or irritable mood accompanied by increased activity or energy and other characteristic symptoms sufficiently severe to cause marked impairment). Duration has to be explicitly asked."
+/ROOT/ELEVATEDMOOD/SUB/MED/MANIC/MANIC_HALL,MANIC_HALL,MANIC,The patient meets the criteria if they acknowledge having a history of delusions or hallucinations.
+/ROOT/ELEVATEDMOOD/SUB/MED/MANIC/MANIC_HALL/MANIC_HALL_PSYC,MANIC_HALL_PSYC,MANIC_HALL,The criteria are met if the patient's psychotic symptoms occur exclusively during manic or major depressive episodes.
+/ROOT/ELEVATEDMOOD/SUB/MED/MANIC/MANIC_HALL/MANIC_HALL_PSYC/BPIPSYC,BPIPSYC,MANIC_HALL_PSYC,Bipolar I disorder with psychotic features
+/ROOT/ELEVATEDMOOD/SUB/MED/MANIC/MANIC_HALL/MANIC_HALL_PSYC/SCHIZ,SCHIZ,MANIC_HALL_PSYC,Schizophrenia spectrum or other psychotic disorder
+/ROOT/ELEVATEDMOOD/SUB/MED/MANIC/MANIC_HALL/BPI,BPI,MANIC_HALL,Bipolar I disorder
+/ROOT/ELEVATEDMOOD/SUB/MED/MANIC/HYPOMANIC,HYPOMANIC,MANIC,"The patient has reported hypomanic and at least one Major Depressive Epsidoe. Criteria met for a hypomanic episode (i.e., at least 4 days of elevated, expansive, or irritable mood accompanied by increased activity or energy and other characteristic symptoms not severe enough to cause marked impairment) and has at other times met criteria for a Major Depression Episode.  Duration has to be explicitly asked."
+/ROOT/ELEVATEDMOOD/SUB/MED/MANIC/HYPOMANIC/HYPOMANIC_HALL,HYPOMANIC_HALL,HYPOMANIC,The patient meets the criteria if they acknowledge having a history of delusions or hallucinations.
+/ROOT/ELEVATEDMOOD/SUB/MED/MANIC/HYPOMANIC/HYPOMANIC_HALL/HYPOMANIC_HALL_PSYC,HYPOMANIC_HALL_PSYC,HYPOMANIC_HALL,The criteria are met if the patient's psychotic symptoms occur exclusively during  major depressive episodes.
+/ROOT/ELEVATEDMOOD/SUB/MED/MANIC/HYPOMANIC/HYPOMANIC_HALL/HYPOMANIC_HALL_PSYC/BPIIPSYC,BPIIPSYC,HYPOMANIC_HALL_PSYC,Bipolar II disorder with psychotic features
+/ROOT/ELEVATEDMOOD/SUB/MED/MANIC/HYPOMANIC/HYPOMANIC_HALL/HYPOMANIC_HALL_PSYC/SCHIZ2,SCHIZ2,HYPOMANIC_HALL_PSYC,Schizophrenia spectrum or other psychotic disorder
+/ROOT/ELEVATEDMOOD/SUB/MED/MANIC/HYPOMANIC/HYPOMANIC_HALL/BPII,BPII,HYPOMANIC_HALL,Bipolar II disorder
+/ROOT/ELEVATEDMOOD/SUB/MED/MANIC/HYPOMANIC/HYPOMANICDEP,HYPOMANICDEP,HYPOMANIC,The criteria are met if the patient explicitly reported at least 2 years of hypomanic symptoms along with periods of depressed mood. Duration should be explicitly asked.
+/ROOT/ELEVATEDMOOD/SUB/MED/MANIC/HYPOMANIC/HYPOMANICDEP/CYC,CYC,HYPOMANICDEP,Cyclothymic
+/ROOT/ELEVATEDMOOD/SUB/MED/MANIC/HYPOMANIC/HYPOMANICDEP/GAMB,GAMB,HYPOMANICDEP,The criteria is met if elevated or euphoric mood confined to periods of gambling
+/ROOT/ELEVATEDMOOD/SUB/MED/MANIC/HYPOMANIC/HYPOMANICDEP/GAMB/GAMB_SEV,GAMB_SEV,GAMB,"The criteria are met if the persistent and problematic gambling behaviour leads to clinically significant impairment or distress. This means the symptoms should be significant enough to cause notable distress or impairment, making them a central concern in the patient's overall condition."
+/ROOT/ELEVATEDMOOD/SUB/MED/MANIC/HYPOMANIC/HYPOMANICDEP/GAMB/GAMB_SEV/GAMBD,GAMBD,GAMB_SEV,Gambling Disorder
+/ROOT/ELEVATEDMOOD/SUB/MED/MANIC/HYPOMANIC/HYPOMANICDEP/GAMB/GAMB_SEV/NORMALGAMB,NORMALGAMB,GAMB_SEV,Normal Gambling Behavior
+/ROOT/ELEVATEDMOOD/SUB/MED/MANIC/HYPOMANIC/HYPOMANICDEP/GAMB/OTH,OTH,GAMB,"The criteria are met if the patient exhibits a maladaptive response to a psychosocial stressor, meaning their response is disproportionate or ineffective, leading to significant distress or impairment in functioning."
+/ROOT/ELEVATEDMOOD/SUB/MED/MANIC/HYPOMANIC/HYPOMANICDEP/GAMB/OTH/OTHBP,OTHBP,OTH,Other specified bipolar and related disorder; unspecified bipolar and related disorder
+/ROOT/ELEVATEDMOOD/SUB/MED/MANIC/HYPOMANIC/HYPOMANICDEP/GAMB/OTH/NOAMLELEVATED,NOAMLELEVATED,OTH,"""Normal"" elevated or euphoric mood"
+/ROOT/ELEVATEDMOOD/NORMAL,NORMAL,ELEVATEDMOOD,Healthy

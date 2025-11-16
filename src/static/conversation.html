@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnostic Conversation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #4a90e2;
+        }
+
+        #main-container {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        #conversation-container {
+            flex: 1;
+            max-width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #conversation {
+            width: 100%;
+            height: 500px;
+            overflow-y: auto;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        #conversation p {
+            padding: 8px 12px;
+            border-radius: 8px;
+            max-width: 80%;
+            margin: 5px 0;
+        }
+
+        #conversation p:nth-child(odd) {
+            background-color: #e8f5e9;
+            align-self: flex-start;
+        }
+
+        #conversation p:nth-child(even) {
+            background-color: #f1f0f0;
+            align-self: flex-end;
+            text-align: right;
+        }
+
+        #input-container {
+            display: flex;
+            width: 100%;
+            gap: 10px;
+        }
+
+        #response {
+            flex-grow: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #response:focus {
+            border-color: #4a90e2;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4a90e2;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #357abd;
+        }
+
+        #buttons-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        #tree-container h2 {
+            color: #4a90e2;
+            text-align: center;
+        }
+
+        .met_criteria {
+            fill: rgb(0, 255, 191);
+        }
+
+        .not_met_criteria {
+            fill: rgb(255, 81, 0);
+        }
+
+        .ask_more_detail {
+            fill: rgb(0, 183, 255);
+        }
+
+        .detect_contradiction {
+            fill: rgb(255, 251, 0);
+        }
+
+        /* Make tree-container a positioning context */
+        #tree-container {
+            position: relative; /* Add this line */
+            flex: 1;
+            max-width: 50%;
+            height: 500px;
+            overflow: hidden;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(126, 117, 117, 0.1);
+        }
+
+        /* Style the action-container */
+        #action-container {
+            position: absolute; /* Position it absolutely within tree-container */
+            top: 10px;          /* Align to the top */
+            right: 10px;        /* Align to the right */
+            width: 300px;       /* Adjust width as needed */
+            padding: 10px;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            max-height: 80%;    /* Optional: Limit height */
+            overflow-y: auto;   /* Optional: Scroll if content overflows */
+            z-index: 1;         /* Ensure it appears above other elements */
+        }
+
+        /* Style for action-container header */
+        #action-container h2 {
+            font-size: 16px;
+            margin-top: 0;
+            color: #4a90e2;
+            text-align: center;
+        }
+
+        /* Style the action items */
+        .action-item {
+            display: flex;
+            align-items: center;
+            padding: 5px 0;
+            margin: 5px 0;
+            color: #000000;
+        }
+
+        /* Style for the color-coded circle */
+        .color-circle {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        /* Tooltip container */
+        .tooltip {
+            position: absolute;
+            text-align: center;
+            padding: 6px;
+            font-size: 12px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            border-radius: 4px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 2;
+        }
+    </style>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <h1>Diagnostic Conversation with Dr. WiseMind</h1>
+
+    <div id="main-container">
+        <!-- Left side: Conversation -->
+        <div id="conversation-container">
+            <div id="conversation"></div>
+            <div id="input-container">
+                <input type="text" id="response" placeholder="Type your response here" required/>
+                <button id="sendButton" onclick="sendResponse()">Send</button>
+                <button id="Next" onclick="sendNext()">Next</button>
+                <button id="Continue" onclick="sendContinue()">Continue</button>
+            </div>
+            <div id="buttons-container">
+                <button onclick="goHome()">Back to Home Page</button>
+                <button id="seeResults" class="disabled" onclick="viewResults()" disabled>See Results</button>
+            </div>
+        </div>
+
+        <!-- Right side: D3.js Diagnosis Procedure visualization -->
+        <div id="tree-container">
+            <h2>Diagnosis Procedure</h2>
+            <svg id="tree-svg" width="100%" height="100%"></svg>
+            
+        </div>
+        <div id="action-container">
+            <h2>Node Actions</h2>
+            <div id="action-list"></div>
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const treeType = urlParams.get('tree_type');
+        const hci = urlParams.get('hci') === 'true';
+        let diagnosticResult = null;
+        
+        // Disable the response input and button if HCI is false
+        if (!hci) {
+            document.getElementById('response').hidden = 'hidden';
+            document.getElementById('sendButton').hidden = 'hidden';
+            
+        } else {
+            document.getElementById('Next').hidden = 'hidden';
+            document.getElementById('Continue').hidden = 'hidden';
+            var input = document.getElementById("response");
+            input.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                document.getElementById("sendButton").click();
+            }
+            });
+        }
+
+        const websocket = new WebSocket("ws://localhost:8000/ws/diagnostic");
+        // const websocket = new WebSocket(`wss://${window.location.host}/ws/diagnostic`);
+        websocket.onopen = function() {
+            websocket.send(JSON.stringify({
+                tree_type: treeType,
+                doctor_type: urlParams.get('doctor_type'),
+                llm_type: urlParams.get('llm_type'),
+                hci: urlParams.get('hci') === 'true'
+            }));
+        };
+
+        websocket.onmessage = function(event) {
+            const conversation = document.getElementById('conversation');
+            const messageElement = document.createElement("p");
+            messageElement.textContent = event.data;
+
+            if (event.data.startsWith("Diagnosis Procedure Status:")) {
+                const items = event.data.replace("Diagnosis Procedure Status: ", "").split(",");
+                const action = items[0];
+                const node = items[1];
+                updateNodeColor(node, action);
+                updateActionList(node, action);
+            } else if (event.data.startsWith("Diagnostic complete!")) {
+                diagnosticResult = event.data.replace("Diagnostic complete! Final result: ", "");
+                enableSeeResultsButton();
+            } else {
+                conversation.appendChild(messageElement);
+                conversation.scrollTop = conversation.scrollHeight;
+            }
+        };
+
+        function sendNext() {
+            if (websocket.readyState === WebSocket.OPEN) {
+                websocket.send("NEXT");
+            }
+        }
+
+        function sendContinue() {
+            if (websocket.readyState === WebSocket.OPEN) {
+                document.getElementById('Next').disabled = true;
+                document.getElementById('Next').classList.add('disabled');
+                websocket.send("CONTINUE");
+            }
+        }
+
+        function sendResponse() {
+            const response = document.getElementById('response').value;
+            if (websocket.readyState === WebSocket.OPEN && response) {
+                websocket.send(response);
+                const conversation = document.getElementById('conversation');
+                const messageElement = document.createElement("p");
+                messageElement.textContent = "You: " + response;
+                messageElement.style.backgroundColor = "#cfe9ff";
+                conversation.appendChild(messageElement);
+                document.getElementById('response').value = "";
+                conversation.scrollTop = conversation.scrollHeight;
+            } else {
+                alert("Please enter a response.");
+            }
+        }
+
+        function goHome() {
+            window.location.href = "/";
+        }
+
+        function viewResults() {
+            if (diagnosticResult) {
+                window.location.href = `/results?result=${encodeURIComponent(diagnosticResult)}`;
+            }
+        }
+
+        function enableSeeResultsButton() {
+            const seeResultsButton = document.getElementById('seeResults');
+            seeResultsButton.classList.remove('disabled');
+            seeResultsButton.disabled = false;
+        }
+
+        async function fetchAndRenderTree(treeType) {
+            try {
+                const response = await fetch(`/api/tree/${treeType}`);
+                const flatData = await response.json();
+
+                const treeData = buildHierarchy(flatData);
+                renderTree(treeData);
+            } catch (error) {
+                console.error(error);
+                document.getElementById('tree-container').innerText = "Error loading tree data.";
+            }
+        }
+
+        function buildHierarchy(flatData) {
+            const dataMap = {};
+            flatData.forEach(node => dataMap[node.name] = { ...node, children: [] });
+
+            const tree = [];
+            flatData.forEach(node => {
+                if (node.parent && dataMap[node.parent]) {
+                    dataMap[node.parent].children.push(dataMap[node.name]);
+                } else {
+                    tree.push(dataMap[node.name]);
+                }
+            });
+            return tree[0];  // Assuming a single root
+        }
+
+        function renderTree(treeData) {
+            const svg = d3.select("#tree-svg"),
+                  width = 600,
+                  height = 500;
+
+            const root = d3.hierarchy(treeData);
+            const treeLayout = d3.tree().size([width - 100, height - 100]);
+            treeLayout(root);
+
+            svg.selectAll("*").remove();
+
+            const g = svg.append("g")
+                .attr("transform", "translate(50, 50)");
+
+            const zoom = d3.zoom()
+                .scaleExtent([0.5, 3])
+                .on("zoom", (event) => g.attr("transform", event.transform));
+
+            svg.call(zoom);
+
+            g.selectAll("line")
+                .data(root.links())
+                .enter()
+                .append("line")
+                .attr("x1", d => d.source.x)
+                .attr("y1", d => d.source.y)
+                .attr("x2", d => d.target.x)
+                .attr("y2", d => d.target.y)
+                .attr("stroke", "#ccc");
+
+            const nodes = g.selectAll("g.node")
+                .data(root.descendants())
+                .enter()
+                .append("g")
+                .attr("class", "node")
+                .attr("transform", d => `translate(${d.x},${d.y})`);
+
+            // Create the tooltip
+            const tooltip = d3.select("body")
+                .append("div")
+                .attr("class", "tooltip");
+
+            nodes.append("circle")
+                .attr("r", 10)
+                .attr("fill", "#afa2a2")
+                .attr("id", d => d.data.name)
+                .on("mouseover", function(event, d) {
+                    tooltip
+                        .style("opacity", 1)
+                        .html(`<strong>Node:</strong> ${d.data.name}<br><strong>Info:</strong> ${d.data.Description || 'No additional info'}`);
+                })
+                .on("mousemove", function(event) {
+                    tooltip
+                        .style("left", (event.pageX + 10) + "px")
+                        .style("top", (event.pageY + 10) + "px");
+                })
+                .on("mouseout", function() {
+                    tooltip.style("opacity", 0);
+                });
+
+            nodes.append("text")
+                .attr("dy", 4)
+                .attr("text-anchor", "middle")
+                .attr("font-size", 5)
+                .text(d => d.data.name);
+        }
+
+        function updateNodeColor(nodeName, action) {
+            const nodeElement = d3.select(`#${nodeName}`);
+            nodeElement.classed("met_criteria", action === "met_criteria")
+                       .classed("not_met_criteria", action === "not_met_criteria")
+                       .classed("ask_more_detail", action === "ask_more_detail")
+                       .classed("detect_contradiction", action === "detect_contradiction");
+        }
+
+        function updateActionList(nodeName, action) {
+            const actionList = document.getElementById('action-list');
+
+            // Clear existing content
+            actionList.innerHTML = '';
+
+            // Create a container for the action item
+            const actionItem = document.createElement('div');
+            actionItem.className = `action-item ${action}`;
+
+            // Create a color-coded circle
+            const colorCircle = document.createElement('div');
+            colorCircle.className = 'color-circle';
+            colorCircle.style.backgroundColor = getActionColor(action);
+
+            // Set the text content
+            const textContent = document.createElement('span');
+            if (action === 'met_criteria') {
+                textContent.textContent = 'Thought: The patient may exhibit this symptom';
+            } else if (action === 'not_met_criteria') {
+                textContent.textContent = 'Thought: The patient does not exhibit this symptom';
+            } else if (action === 'ask_more_detail') {
+                textContent.textContent = 'Thought: I am not sure, I need to ask for more details';
+            } else if (action === 'detect_contradiction') {
+                textContent.textContent = 'Thought: I detect a contradiction in the patient\'s response. So I need to recheck some symptoms';
+            } else {
+                textContent.textContent = 'No action';
+            }
+            
+
+            // Append circle and text to the action item
+            actionItem.appendChild(colorCircle);
+            actionItem.appendChild(textContent);
+
+            // Append the action item to the action list
+            actionList.appendChild(actionItem);
+        }
+
+        // Helper function to get action colors
+        function getActionColor(action) {
+            switch (action) {
+                case 'met_criteria': return 'rgb(0, 255, 191)';       // Green
+                case 'not_met_criteria': return 'rgb(255, 81, 0)';    // Red
+                case 'ask_more_detail': return 'rgb(0, 183, 255)';    // Blue
+                case 'detect_contradiction': return 'rgb(255, 251, 0)'; // Yellow
+                default: return '#ccc';                              // Default gray
+            }
+        }
+
+        fetchAndRenderTree(treeType);
+    </script>
+</body>
+</html>

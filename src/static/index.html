@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnostic Setup</title>
+    <style>
+        /* Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fc;
+            color: #495057;
+        }
+
+        h1 {
+            color: #4a90e2;
+            text-align: center;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        #setupForm {
+            width: 100%;
+            max-width: 450px;
+            padding: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #333;
+            text-align: left;
+        }
+
+        select, input[type="checkbox"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 0.95em;
+            color: #495057;
+            background-color: #f8f9fa;
+        }
+
+        #hci {
+            width: auto;
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            font-size: 0.9em;
+            color: #495057;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            font-size: 1em;
+            font-weight: bold;
+            color: #fff;
+            background-color: #4a90e2;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #357abd;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 500px) {
+            #setupForm {
+                width: 90%;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="setupForm">
+        <h1>Select Diagnostic Options</h1>
+        <form>
+            <label for="tree_type">Tree Type:</label>
+            <select id="tree_type" name="tree_type" required>
+                <option value="mdd">Major Depressive Disorder (mdd)</option>
+                <option value="anx">Anxiety (anx)</option>
+                <option value="bp">Bipolar Disorder (bp)</option>
+            </select>
+
+            <label for="doctor_type">Doctor Type:</label>
+            <select id="doctor_type" name="doctor_type" required>
+                <option value="WiseMind_doctor">SKEP</option>
+                <option value="KFP_doctor">KFP</option>
+                <option value="TKEP_ICL_doctor">USKEP-ICL</option>
+                <option value="TKEP_RAG_doctor">USKEP-RAG</option>
+            </select>
+
+            <label for="llm_type">LLM Type:</label>
+            <select id="llm_type" name="llm_type" required>
+                <option value="openai">GPT</option>
+                <option value="anthropic">CLAUDE</option>
+                <option value="mistral">MISTRAL</option>
+                <option value="qwen">QWEN</option>
+                <option value="deepseek">DEEPSEEK</option>
+            </select>
+
+
+
+            <button type="button" onclick="submitForm()">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function submitForm() {
+            const treeType = document.getElementById('tree_type').value;
+            const doctorType = document.getElementById('doctor_type').value;
+            const llmType = document.getElementById('llm_type').value;
+            const hci = true;
+
+            // Construct the URL with query parameters
+            const url = `/conversation?tree_type=${encodeURIComponent(treeType)}&doctor_type=${encodeURIComponent(doctorType)}&llm_type=${encodeURIComponent(llmType)}&hci=${hci}`;
+
+            // Redirect to conversation.html with the selected options
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+path,name,parent,Description
+/ROOT,ROOT,,Starting the interview
+/ROOT/ANXIETYROOT,ANXIETYROOT,ROOT,ICEBREAKING. Check for anxiety mood
+/ROOT/ANXIETYROOT/SUB,SUB,ANXIETYROOT,"Determine if the patient's anxiety is primarily due to the physiological effects of a substance, such as drugs, alcohol, or medications for any medical conditions. "
+/ROOT/ANXIETYROOT/SUB/SUB_DIST,SUB_DIST,SUB,Determine if the patient's anxiety mood is associated with disturbance in attention and awareness is characterized by a fluctuating course. 
+/ROOT/ANXIETYROOT/SUB/SUB_DIST/SIDELIRIUM,SIDELIRIUM,SUB_DIST,Substance Intoxication Delirium; Substance withdrawal delirium; Medication-Induced Delirium
+/ROOT/ANXIETYROOT/SUB/SUB_DIST/SUB_DIST_SEV,SUB_DIST_SEV,SUB_DIST,"Evaluate if the anxiety mood reported by the patient is the primary focus of the clinical picture and is of sufficient severity to require clinical attention. "
+/ROOT/ANXIETYROOT/SUB/SUB_DIST/SUB_DIST_SEV/SIANX,SIANX,SUB_DIST_SEV,Substance/Medication-Induced Anxiety Disorder
+/ROOT/ANXIETYROOT/SUB/SUB_DIST/SUB_DIST_SEV/SI,SI,SUB_DIST_SEV,Substance Intoxication; Substance Withdrawal; Other Adverse Effect of Medication
+/ROOT/ANXIETYROOT/SUB/MED,MED,SUB,"Determine if the patient's anxiety mood is primarily caused by the physiological effects of a general medical condition, such as physical health issues. "
+/ROOT/ANXIETYROOT/SUB/MED/MED_DIST,MED_DIST,MED,"Evaluate if the anxiety mood reported by the patient is the primary focus of the clinical picture and is of sufficient severity to require clinical attention. "
+/ROOT/ANXIETYROOT/SUB/MED/MED_DIST/MEDDELIRIUM,MEDDELIRIUM,MED_DIST,Delirium Due to Another Medical Condition
+/ROOT/ANXIETYROOT/SUB/MED/MED_DIST/MED_DIST_SEV,MED_DIST_SEV,MED_DIST,"Assess whether the patient shows evidence of decline in one or more cognitive domains, including complex attention, executive function, learning and memory, language, perceptual-motor abilities, or social cognition. "
+/ROOT/ANXIETYROOT/SUB/MED/MED_DIST/MED_DIST_SEV/MNEUD,MNEUD,MED_DIST_SEV,"Major or Mild Neurocognitive disorder due to another medical condition, with behavioral disturbance"
+/ROOT/ANXIETYROOT/SUB/MED/MED_DIST/MED_DIST_SEV/MEDANX,MEDANX,MED_DIST_SEV,Anxiety Disorder Due to Another Medical Condition
+/ROOT/ANXIETYROOT/SUB/MED/FEAR,FEAR,MED,Determine if the patient's anxiety occur in the context of an abrupt surge of intense fear and discomfort that reaches a peak within minutes. 
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICATTACK,PANICATTACK,FEAR,Panic Attack
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV,PANICSEV,FEAR,"Determine if the patient experiences recurrent, unexpected panic attacks that are clinically significant. "
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PANICDISORDER,PANICDISORDER,PANICSEV,Panic Disorder
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE,PLACE,PANICSEV,Determine if the patient experiences anxiety about being in places or situations where escape might be difficult or embarrassing in the event of a panic attack or panic-like symptoms. .
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/AGORAPHOBIA,AGORAPHOBIA,PLACE,Agoraphobia
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION,SPERATION,PLACE,Determine if the patient experiences anxiety or worry specifically related to separation from major attachment figures. 
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SEPANX,SEPANX,SPERATION,Separation Anxiety Disorder
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL,SOCIAL,SPERATION,Determine if the patient experiences anxiety or worry specifically about social situations where they are exposed to the scrutiny of others.
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/SOCIALANX,SOCIALANX,SOCIAL,Social Anxiety Disorder
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/FEAROBJ,FEAROBJ,SOCIAL,"Determine if the patient experiences anxiety about exposure to a feared object (e.g., spiders) or situation (e.g., getting an injection, flying). "
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/FEAROBJ/SPEPHOBIA,SPEPHOBIA,FEAROBJ,Specific Phobia
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/FEAROBJ/HEALTH,HEALTH,FEAROBJ,Determine if the patient experiences anxiety specifically about their health and the possibility of having or acquiring a serious illness. .
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/FEAROBJ/HEALTH/SOMATIC,SOMATIC,HEALTH,Determine if the patient experiences somatic symptoms that are distressing. .
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/FEAROBJ/HEALTH/SOMATIC/SOMATICD,SOMATICD,SOMATIC,Somatic Symptom Disorder
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/FEAROBJ/HEALTH/SOMATIC/SEV_PHYS,SEV_PHYS,SOMATIC,Determine if the patient's belief about having a serious physical illness reaches a delusional intensity.
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/FEAROBJ/HEALTH/SOMATIC/SEV_PHYS/PSYCHD,PSYCHD,SEV_PHYS,Psychotic Disorder
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/FEAROBJ/HEALTH/SOMATIC/SEV_PHYS/ILLANX,ILLANX,SEV_PHYS,Illness Anxiety Disorder
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/FEAROBJ/HEALTH/DISCARD,DISCARD,HEALTH,"Check if the patient feels anxious about getting rid of personal items, leading to a buildup of possessions that clutter their living spaces. "
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/FEAROBJ/HEALTH/DISCARD/HOARDINGD,HOARDINGD,DISCARD,Hoarding Disorder
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/FEAROBJ/HEALTH/DISCARD/APPEARANCE,APPEARANCE,DISCARD,Check if the patient feels anxious or worried about a perceived flaw in their appearance that is not noticeable to others.
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/FEAROBJ/HEALTH/DISCARD/APPEARANCE/BODYDD,BODYDD,APPEARANCE,Body Dysmorphic Disorder
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/FEAROBJ/HEALTH/DISCARD/APPEARANCE/REC,REC,APPEARANCE,"Check if the patient experiences anxiety linked to repeated worries, thoughts, or excessive overthinking. "
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/FEAROBJ/HEALTH/DISCARD/APPEARANCE/REC/INTRUSIVE,INTRUSIVE,REC,"Check if the patient has recurring thoughts that are experienced as intrusive, unwanted, and conflicting with their sense of self. "
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/FEAROBJ/HEALTH/DISCARD/APPEARANCE/REC/INTRUSIVE/OBSESSIVE,OBSESSIVE,INTRUSIVE,Obsessive-complusive Disorder
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/FEAROBJ/HEALTH/DISCARD/APPEARANCE/REC/INTRUSIVE/GENERALIZEDANX,GENERALIZEDANX,INTRUSIVE,Generalized Anxiety Disorder
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/FEAROBJ/HEALTH/DISCARD/APPEARANCE/REC/TRAUMA,TRAUMA,REC,"Check if the patient experiences anxiety related to exposure to a severe traumatic event, accompanied by intrusive symptoms (such as flashbacks or nightmares), avoidance of reminders of the trauma, negative changes in thoughts and mood, and increased arousal or reactivity. "
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/FEAROBJ/HEALTH/DISCARD/APPEARANCE/REC/TRAUMA/TRAUMA_DUR,TRAUMA_DUR,TRAUMA,"Criteria met if the patient's stress disorder symptoms last more than a month. "
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/FEAROBJ/HEALTH/DISCARD/APPEARANCE/REC/TRAUMA/TRAUMA_DUR/PTSD,PTSD,TRAUMA_DUR,Post-Traumatic Stress Disorder
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/FEAROBJ/HEALTH/DISCARD/APPEARANCE/REC/TRAUMA/TRAUMA_DUR/ASD,ASD,TRAUMA_DUR,Acute Stress Disorder
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/FEAROBJ/HEALTH/DISCARD/APPEARANCE/REC/TRAUMA/MANIC,MANIC,TRAUMA,"Check if the patient experiences anxiety that is associated with a manic episode, a hypomanic episode, or a major depressive episode. "
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/FEAROBJ/HEALTH/DISCARD/APPEARANCE/REC/TRAUMA/MANIC/MDDANX,MDDANX,MANIC,"Major Depressive Episode with Anxious feawtures in major depressive, bipolar I, or BipolarII disorder"
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/FEAROBJ/HEALTH/DISCARD/APPEARANCE/REC/TRAUMA/MANIC/OTH,OTH,MANIC,"The criteria are met if the patient exhibits a maladaptive response to a psychosocial stressor, meaning their response is disproportionate or ineffective, leading to significant distress or impairment in functioning."
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/FEAROBJ/HEALTH/DISCARD/APPEARANCE/REC/TRAUMA/MANIC/OTH/PSYCHSTRESSOR,PSYCHSTRESSOR,OTH,Check if the patient's symptoms occur in response to a psychosocial stressor. 
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/FEAROBJ/HEALTH/DISCARD/APPEARANCE/REC/TRAUMA/MANIC/OTH/NORMALANX,NORMALANX,OTH,Normal Anxiety
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/FEAROBJ/HEALTH/DISCARD/APPEARANCE/REC/TRAUMA/MANIC/OTH/NORMALANX/ADJD,ADJD,NORMALANX,Adjustment Disorder With Anxiety
+/ROOT/ANXIETYROOT/SUB/MED/FEAR/PANICSEV/PLACE/SPERATION/SOCIAL/FEAROBJ/HEALTH/DISCARD/APPEARANCE/REC/TRAUMA/MANIC/OTH/NORMALANX/OTHANX,OTHANX,NORMALANX,Other specified anxiety disorder; Unspecified anxiety disorder
+/ROOT/ANXIETYROOT/NORMAL,NORMAL,ANXIETYROOT,No Anxiety Mood
