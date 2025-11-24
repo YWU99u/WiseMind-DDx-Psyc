@@ -12,41 +12,11 @@ This repository contains the WiseMind prototype system, including:
 
 ## 🚀 1. Running the WiseMind Web App
 
-You can run WiseMind in two ways: **locally** (with your own API key) or through our **hosted demo URL**.
+You can run WiseMind through our **hosted demo URL**. The original code was not released due to the confidentiality. 
 
 ---
 
-### **Option A — Run Locally (Recommended for Development)**
-
-1. Install dependencies (via `conda` or `pip`) so that FastAPI, Uvicorn, and the OpenAI client are available.
-
-2. Set your API key as an environment variable:
-```bash
-   export OPENAI_API_KEY="sk-..."
-```
-
-3. Navigate to the application directory:
-```bash
-   cd src
-```
-
-4. Start the server:
-```bash
-   uvicorn app:app --host 0.0.0.0 --port 8000
-```
-
-5. Open your browser to:
-```
-   http://127.0.0.1:8000
-```
-   or
-```
-   http://localhost:8000
-```
-
----
-
-### **Option B — Hosted Demo (For Reviewers Only)**
+### **Hosted Demo (For Reviewers Only)**
 
 A temporary, rate-limited demonstration endpoint is available at:
 
