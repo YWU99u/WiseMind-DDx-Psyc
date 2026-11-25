@@ -20,11 +20,16 @@ You can run WiseMind through our **hosted demo URL**. The original code was not 
 
 A temporary, rate-limited demonstration endpoint is available at:
 
-👉 **http://140.206.187.2/wisemind/**
+👉 **https://research-wisemind.keylinkai.com/**
 
 This instance uses an author-provided API key for testing and review only. It is **not intended for production or clinical use**.
+Please contact us for test accounts.
 
 ---
+
+### Updates: We now give a python package for the public to test the framework. Please see the instruction at src/wisemind-sdk.ipynb
+`pip install wisemind-client`
+Please contact us for access token. 
 
 ## 🧪 2. Generating Virtual Standard Patients (VSPs)
 
@@ -149,6 +154,7 @@ src/
   app.py                         # FastAPI application
   generate_vsp.py                # Generate Virtual Standard Patients
   differential_diagnosis_tree.ipynb
+  wisemind-sdk.ipynb
 
 data/
   
@@ -190,7 +196,7 @@ This system is a **research prototype** and is **not approved for clinical use**
 ## 📧 Contact
 
 For questions, issues, or collaboration inquiries, please contact:
-- **Yuqi Wu** — yuqi14@ualberta.ca
+- **Yuqi Wu** — ywu_bh@fudan.edu.cn
 
 ---
 
@@ -202,7 +208,7 @@ Apache 2.0
 
 ## 🙏 Acknowledgments
 
-This work was supported by [funding sources]. We thank:
+We thank:
 - The developers of the KangNing dataset
 - Clinical collaborators at University of Alberta
 - Research participants who contributed to user evaluations
