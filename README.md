@@ -178,7 +178,15 @@ README.md                        # this file
 
 If you use this code in academic work, please cite the associated manuscript:
 
-**WiseMind: Recontextualizing AI with a Knowledge-Guided, Theory-Informed Multi-Agent Framework for Instrumental and Humanistic Benefits** (2025).
+```
+@article{wu2026wisemind,
+  title={WiseMind: a knowledge-guided multi-agent framework for accurate and empathetic psychiatric diagnosis},
+  author={Wu, Yuqi and Wan, Guangya and Li, Jingjing and Zhao, Shengming and Ma, Lingfeng and Ye, Tianyi and Zhang, Mike and Pop, Ion and Zhang, Yanbo and Chen, Jie},
+  journal={npj Digital Medicine},
+  year={2026},
+  publisher={Nature Publishing Group UK, London}
+}
+```
 
 ---
 
